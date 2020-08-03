@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+ {{ user.username|default:'Guest' }}, 你好, 期待加入我们，用技术改变世界
+
+{% if job_list %}
+    <ul>
+    {% for job in job_list %}
+        <li>{{job.type_name}}  <a href="/job/{{ job.id }}/">{{ job.job_name }}</a>   {{job.city_name}}  </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No jobs are available.</p>
+{% endif %}
+
+{% endblock %}
