@@ -19,5 +19,6 @@ from django.urls import path
 
 urlpatterns = [
     url(r"^", include("job.urls")),
+
     path('admin/', admin.site.urls),
 ]

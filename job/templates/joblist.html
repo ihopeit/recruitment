@@ -7,7 +7,7 @@
 {% if job_list %}
     <ul>
     {% for job in job_list %}
-        <li>{{job.type_name}}  <a href="/job/{{ job.id }}/">{{ job.job_name }}</a>   {{job.city_name}}  </li>
+        <li>{{job.type_name}}  <a href="/job/{{ job.id }}/" style="color:blue">{{ job.job_name }}</a>   {{job.city_name}}  </li>
     {% endfor %}
     </ul>
 {% else %}
