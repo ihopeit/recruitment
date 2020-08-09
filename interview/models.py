@@ -29,8 +29,8 @@ class Candidate(models.Model):
     bachelor_school = models.CharField(max_length=135, blank=True, verbose_name=u'本科学校')
     master_school = models.CharField(max_length=135, blank=True, verbose_name=u'研究生学校')
     doctor_school = models.CharField(max_length=135, blank=True, verbose_name=u'博士生学校')
-    degree = models.CharField(max_length=135, choices=DEGREE_TYPE, blank=True, verbose_name=u'学历')
     major = models.CharField(max_length=135, blank=True, verbose_name=u'专业')
+    degree = models.CharField(max_length=135, choices=DEGREE_TYPE, blank=True, verbose_name=u'学历')
 
     # 综合能力测评成绩，笔试测评成绩
     test_score_of_general_ability = models.DecimalField(decimal_places=1, null=True, max_digits=3, blank=True,
@@ -94,5 +94,10 @@ class Candidate(models.Model):
         verbose_name = u'应聘者'
         verbose_name_plural = u'应聘者'
 
+    # Python 2 优先使用这个方法，把对象转换成字符串； 如果没有__unicode__()方法，使用 __str__()方法
     def __unicode__(self):
+        return self.username
+
+    # Python 3 直接定义 __str__() 方法即可，系统使用这个方法来把对象转换成字符串
+    def __str__(self):
         return self.username
