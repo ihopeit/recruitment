@@ -18,8 +18,6 @@ class CandidateAdmin(admin.ModelAdmin):
         ('第二轮面试（专业复试）', {'fields': (("second_score", "second_learning_ability", "second_professional_competency"),("second_pursue_of_excellence", "second_communication_ability", "second_pressure_score"), "second_advantage", "second_disadvantage", "second_result", "second_recommend_position", "second_interviewer", "second_remark",)}),
         ('HR复试', {'fields': ("hr_score", ("hr_responsibility", "hr_communication_ability", "hr_logic_ability"), ("hr_potential", "hr_stability"), "hr_advantage", "hr_disadvantage", "hr_result", "hr_interviewer", "hr_remark",)}),
     )
-    # add_form_template = 'admin/add_candidate.html'
-    # change_form_template = 'admin/edit_candidate.html'
 
     def save_model(self, request, obj, form, change):
         obj.last_editor = request.user.username
