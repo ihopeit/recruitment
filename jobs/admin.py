@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 
-from job.models import Job
+from jobs.models import Job
 
 class JobAdmin(admin.ModelAdmin):
     exclude = ('creator','created_date','modified_date')

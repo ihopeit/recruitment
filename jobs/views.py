@@ -6,8 +6,8 @@ from django.http import HttpResponse
 from django.http import Http404
 from django.template import RequestContext, loader
 
-from job.models import Job
-from job.models import Cities, JobTypes
+from jobs.models import Job
+from jobs.models import Cities, JobTypes
 
 
 def joblist(request):
@@ -26,5 +26,5 @@ def detail(request, job_id):
     except Job.DoesNotExist:
         raise Http404("Job does not exist")
     return render(request, 'job.html', {'job': job})
-    return HttpResponse("You're looking at job %s." % job_id)
+
 

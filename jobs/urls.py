@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from job import views
+from jobs import views
 
 urlpatterns = [
     # 职位列表
