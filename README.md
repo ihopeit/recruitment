@@ -10,7 +10,10 @@
 https://docs.djangoproject.com/
 
 ### 如何运行
-python ./manage.py runserver 127.0.0.1:8000
+本地和生产环境分别运行如下命令:
+python ./manage.py runserver 127.0.0.1:8000 --settings=settings.local
+python ./manage.py runserver 127.0.0.1:8000 --settings=settings.production
+
 然后可以通过访问如下两个页面 
 * http://127.0.0.1:8000 首页
 * http://127.0.0.1:8000/admin 管理后台
@@ -22,8 +25,8 @@ python ./manage.py runserver 127.0.0.1:8000
 * 维护候选人信息
 * 导入候选人信息
 * 面试官录入面试反馈
-* 域账号集成 [TODO]
-* 邮件通知集成 [TODO]
+* 域账号集成 
+* 钉钉消息通知集成 
 * 候选人列表筛选和查询 [TODO]
 * 如何增加自定义按钮 （数据导出） [TODO]
 * 替换Django admin的主题风格 [TODO]
