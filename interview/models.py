@@ -38,7 +38,8 @@ class Candidate(models.Model):
     paper_score = models.DecimalField(decimal_places=1, null=True, max_digits=3, blank=True, verbose_name=u'笔试成绩')
 
     # 第一轮面试记录
-    first_score = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True, verbose_name=u'初试分')
+    first_score = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True, verbose_name=u'初试分',
+                                      help_text=u'1-5分，极优秀: >=4.5，优秀: 4-4.4，良好: 3.5-3.9，一般: 3-3.4，较差: <3分')
     first_learning_ability = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True,
                                                  verbose_name=u'学习能力得分')
     first_professional_competency = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True,
@@ -52,7 +53,8 @@ class Candidate(models.Model):
     first_remark = models.CharField(max_length=135, blank=True, verbose_name=u'初试备注')
 
     # 第二轮面试记录
-    second_score = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True, verbose_name=u'专业复试得分')
+    second_score = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True, verbose_name=u'专业复试得分',
+                                       help_text=u'1-5分，极优秀: >=4.5，优秀: 4-4.4，良好: 3.5-3.9，一般: 3-3.4，较差: <3分')
     second_learning_ability = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True,
                                                   verbose_name=u'学习能力得分')
     second_professional_competency = models.DecimalField(decimal_places=1, null=True, max_digits=2, blank=True,
