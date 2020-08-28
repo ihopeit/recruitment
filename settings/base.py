@@ -143,13 +143,11 @@ STATIC_URL = '/static/'
 
 # The URL of the LDAP server.
 LDAP_AUTH_URL = "ldap://localhost:389"
-
 # Initiate TLS on connection.
 LDAP_AUTH_USE_TLS = False
 
 # The LDAP search base for looking up users.
 LDAP_AUTH_SEARCH_BASE = "dc=ihopeit,dc=com"
-
 # The LDAP class that represents a user.
 LDAP_AUTH_OBJECT_CLASS = "inetOrgPerson"
 
@@ -165,19 +163,16 @@ LDAP_AUTH_USER_FIELDS = {
 # A tuple of django model fields used to uniquely identify a user.
 LDAP_AUTH_USER_LOOKUP_FIELDS = ("username",)
 
-
 # Path to a callable that takes a dict of {model_field_name: value},
 # returning a dict of clean model data.
 # Use this to customize how data loaded from LDAP is saved to the User model.
 LDAP_AUTH_CLEAN_USER_DATA = "django_python3_ldap.utils.clean_user_data"
-
 
 # The LDAP username and password of a user for querying the LDAP database for user
 # details. If None, then the authenticated user will be used for querying, and
 # the `ldap_sync_users` command will perform an anonymous query.
 LDAP_AUTH_CONNECTION_USERNAME = None
 LDAP_AUTH_CONNECTION_PASSWORD = None
-
 
 AUTHENTICATION_BACKENDS = {"django_python3_ldap.auth.LDAPBackend",'django.contrib.auth.backends.ModelBackend',}
 

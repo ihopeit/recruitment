@@ -67,7 +67,7 @@ class Candidate(models.Model):
     second_disadvantage = models.TextField(max_length=1024, blank=True, verbose_name=u'顾虑和不足')
     second_result = models.CharField(max_length=256, choices=INTERVIEW_RESULT_TYPE, blank=True, verbose_name=u'专业复试结果')
     second_recommend_position = models.CharField(max_length=256, blank=True, verbose_name=u'建议方向或推荐部门')
-    second_interviewer = models.CharField(max_length=256, blank=True, verbose_name=u'面试官')
+    second_interviewer = models.CharField(max_length=256, blank=True, verbose_name=u'二面面试官')
     second_remark = models.CharField(max_length=135, blank=True, verbose_name=u'专业复试备注')
 
     # HR终面
