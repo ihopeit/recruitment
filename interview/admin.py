@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.db.models import Q
 
+from interview import candidate_field as cf
+
 import logging
 import csv
 from datetime import datetime
@@ -68,47 +70,15 @@ class CandidateAdmin(admin.ModelAdmin):
     ### 列表页排序字段
     ordering = ('hr_result','second_result','first_result',)
 
-    # 分组展示字段，分三块，基础信息、第一轮面试记录、第二轮面试（专业复试）、HR复试
-    default_fieldsets = (
-        (None, {'fields': ("userid", ("username", "city", "phone"), ("email", "apply_position", "born_address", "gender", "candidate_remark"), ("bachelor_school", "master_school", "doctor_school"), ("major", "degree"), "test_score_of_general_ability", "paper_score",)}),
-        ('第一轮面试', {'fields': (("first_score", "first_learning_ability", "first_professional_competency"), "first_advantage", "first_disadvantage", "first_result", "first_recommend_position", "first_interviewer_user", "first_remark",)}),
-        ('第二轮面试（专业复试）', {'fields': ("second_score",("second_learning_ability", "second_professional_competency"),("second_pursue_of_excellence", "second_communication_ability", "second_pressure_score"), "second_advantage", "second_disadvantage", "second_result", "second_recommend_position", "second_interviewer_user", "second_remark",)}),
-        ('HR复试', {'fields': ("hr_score", ("hr_responsibility", "hr_communication_ability", "hr_logic_ability"), ("hr_potential", "hr_stability"), "hr_advantage", "hr_disadvantage", "hr_result", "hr_interviewer_user", "hr_remark",)}),
-    )
-
-    default_fieldsets_first = (
-        (None, {'fields': ("userid", ("username", "city", "phone"),
-                           ("email", "apply_position", "born_address", "gender", "candidate_remark"),
-                           ("bachelor_school", "master_school", "doctor_school"), ("major", "degree"),
-                           "test_score_of_general_ability", "paper_score",)}),
-        ('第一轮面试', {'fields': (
-        ("first_score", "first_learning_ability", "first_professional_competency"), "first_advantage",
-        "first_disadvantage", "first_result", "first_recommend_position", "first_interviewer_user", "first_remark",)}),
-    )
-
-    default_fieldsets_second = (
-        (None, {'fields': ("userid", ("username", "city", "phone"),
-                           ("email", "apply_position", "born_address", "gender", "candidate_remark"),
-                           ("bachelor_school", "master_school", "doctor_school"), ("major", "degree"),
-                           "test_score_of_general_ability", "paper_score",)}),
-        ('第一轮面试', {'fields': (
-        ("first_score", "first_learning_ability", "first_professional_competency"), "first_advantage",
-        "first_disadvantage", "first_result", "first_recommend_position", "first_interviewer_user", "first_remark",)}),
-        ('第二轮面试（专业复试）', {'fields': ("second_score", ("second_learning_ability", "second_professional_competency"), (
-        "second_pursue_of_excellence", "second_communication_ability", "second_pressure_score"), "second_advantage",
-                                    "second_disadvantage", "second_result", "second_recommend_position",
-                                    "second_interviewer_user", "second_remark",)}),
-    )
-
     # 一面面试官仅填写一面反馈， 二面面试官可以填写二面反馈
     def get_fieldsets(self, request, obj=None):
         group_names = self.get_group_names(request.user)
 
         if 'interviewer' in group_names and obj.first_interviewer_user == request.user:
-            return self.default_fieldsets_first
+            return cf.default_fieldsets_first
         if 'interviewer' in group_names and obj.second_interviewer_user == request.user:
-            return self.default_fieldsets_second
-        return self.default_fieldsets
+            return cf.default_fieldsets_second
+        return cf.default_fieldsets
 
     # 对于非管理员，非HR，获取自己是一面面试官或者二面面试官的候选人集合:s
     def get_queryset(self, request):  # show data only owned by the user
