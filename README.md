@@ -32,15 +32,26 @@ python manage.py import_candidates --path /path/to/your/file.csv
 在 settings/local.py 或者 settings/production.py 中配置群机器人的 WebHook ， 用来发送消息通知。
 DINGTALK_WEB_HOOK = "https://oapi.dingtalk.com/robot/send?access_token=xsxxx"
 
-### 功能列表
+### 基础功能列表
 * 管理职位
 * 浏览职位
 * 投递职位 [TODO]
 * 维护候选人信息
 * 导入候选人信息
 * 面试官录入面试反馈
-* 域账号集成 
+* 域账号集成 (LDAP账号集成)
+
+### 进阶功能
 * 钉钉消息通知集成 
-* 候选人列表筛选和查询 [TODO]
-* 如何增加自定义按钮 （数据导出） [TODO]
-* 替换Django admin的主题风格 [TODO]
+* 候选人列表筛选和查询 
+* 如何增加自定义按钮 （数据导出为CSV） 
+* 替换Django admin的主题风格
+* 管理员可以在列表页直接编辑候选人的面试官
+* 面试官的数据权限（能录入自己需要反馈的面试环节的内容），数据集权限（看到自己需要评估的候选人），功能权限（导出数据）控制
+
+### 扩展功能 
+* 通知面试官面试 [TODO]
+* 列表页可以查看简历 [TODO]
+* 国际化 [TODO]
+* 错误日志上报 [TODO]
+* 异步任务与定时任务 [TODO]
