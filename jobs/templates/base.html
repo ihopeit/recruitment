@@ -2,5 +2,26 @@
 
 <h1 style="margin:auto; width:50%;"> 匠果科技开放职位  </h1>
 <p></p>
+
+{% block header %}
+<a href="/" style="text-decoration: none; color:#007bff">首页</a>
+<a href="/joblist" style="text-decoration: none; color:#007bff">职位列表</a>
+
+{% if user.is_authenticated %}
+    <a href="/accounts/logout" style="text-decoration: none; color:#007bff">退出</a>
+{% else %}
+    <a href="/accounts/login" style="text-decoration: none; color:#007bff">登陆</a>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <p>终于等到你 {{user.username}}, 期待加入我们，用技术去探索一个新世界</p>
+{% else %}
+    <p>欢迎你，期待加入我们，登陆后可以提交简历.</p>
+{% endif %}
+
+<hr>
+
+{% endblock %}
+
 {% block content %}
 {% endblock %}

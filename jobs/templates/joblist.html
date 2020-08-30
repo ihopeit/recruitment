@@ -2,12 +2,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
- 终于等到你 {{user.username}}, 期待加入我们，用技术去探索一个新世界
-{% if user.is_authenticated %}
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-{% else %}
-    <p>Welcome, new user. Please log in.</p>
-{% endif %}
 
 {% if job_list %}
     <ul>

@@ -57,7 +57,7 @@ class Resume(models.Model):
     modified_date = models.DateTimeField(verbose_name="修改日期", default=datetime.now)
 
     # 候选人自我介绍，工作经历，项目经历
-    candidate_introduction = models.TextField(max_length=1024, blank=True, verbose_name=u'候选人介绍')
+    candidate_introduction = models.TextField(max_length=1024, blank=True, verbose_name=u'自我介绍')
     work_experience = models.TextField(max_length=1024, blank=True, verbose_name=u'工作经历')
     project_experience = models.TextField(max_length=1024, blank=True, verbose_name=u'项目经历')
 

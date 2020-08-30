@@ -1,0 +1,28 @@
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<h1>简历详细信息 </h1>
+
+<div> 姓名: {{ object.username }} </div> <div>城市： {{ object.city }}</div> <div>手机号码: {{ object.phone }}</div>
+
+<p></p>
+<div>邮件地址: {{ object.email}}</div>
+<div>申请职位: {{ object.apply_position}}</div>
+<div>出生地: {{ object.born_address}}</div>
+<div>性别: {{ object.gender}}</div>
+<hr>
+
+<div>本科学校: {{ object.bachelor_school}}</div>
+<div>研究所学校: {{ object.master_school}}</div>
+<div>专业: {{ object.major}}</div>
+<div>学历: {{ object.degree}}</div>
+<hr>
+
+<p>候选人介绍: {{ object.candidate_introduction}}</p>
+<p>工作经历: {{ object.work_experience}}</p>
+<p>项目经历: {{ object.project_experience}}</p>
