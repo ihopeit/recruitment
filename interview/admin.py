@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.db.models import Q
 
 from interview import candidate_field as cf
+from .dingtalk import send
 
 import logging
 import csv
@@ -15,7 +16,21 @@ logger = logging.getLogger(__name__)
 exportable_fields = ('username', 'city', 'phone', 'bachelor_school', 'master_school', 'degree', 'first_result', 'first_interviewer_user',
                      'second_result', 'second_interviewer_user', 'hr_result', 'hr_score', 'hr_remark', 'hr_interviewer_user')
 
-### define export action
+
+# 通知一面面试官面试
+def notify_interviewer(modeladmin, request, queryset):
+    candidates = ""
+    interviewers = ""
+    for obj in queryset:
+        candidates = obj.username + ";" + candidates
+        interviewers = obj.first_interviewer_user.username + ";" + interviewers
+    send("候选人 %s 进入面试环节，亲爱的面试官，请准备好面试： %s" % (candidates, interviewers) )
+
+
+notify_interviewer.short_description = u'通知一面面试官'
+
+
+# define export action
 def export_model_as_csv(modeladmin, request, queryset):
     response = HttpResponse(content_type='text/csv')
     field_list = exportable_fields
@@ -24,7 +39,7 @@ def export_model_as_csv(modeladmin, request, queryset):
         datetime.now().strftime('%Y-%m-%d-%H-%M-%S'),
     )
 
-    ### 写入表头
+    # 写入表头
     writer = csv.writer(response)
     writer.writerow(
         [queryset.model._meta.get_field(f).verbose_name.title() for f in field_list],
@@ -50,9 +65,9 @@ export_model_as_csv.allowed_permissions = ('export',)
 class CandidateAdmin(admin.ModelAdmin):
     exclude = ('creator', 'created_date', 'modified_date')
 
-    actions = (export_model_as_csv,)
+    actions = (export_model_as_csv, notify_interviewer, )
 
-    ### 当前用户是否有导出权限：
+    # 当前用户是否有导出权限：
     def has_export_permission(self, request):
         opts = self.opts
         return request.user.has_perm('%s.%s' % (opts.app_label, "export"))
@@ -61,10 +76,10 @@ class CandidateAdmin(admin.ModelAdmin):
         'username', 'city', 'bachelor_school', 'first_score', 'first_result', 'first_interviewer_user', 'second_score',
         'second_result', 'second_interviewer_user', 'hr_score', 'hr_result', 'hr_interviewer_user',)
 
-    ### 右侧筛选条件
+    # 右侧筛选条件
     list_filter = ('city','first_result','second_result','hr_result','first_interviewer_user','second_interviewer_user','hr_interviewer_user')
 
-    ### 查询字段
+    # 查询字段
     search_fields = ('username', 'phone', 'email', 'bachelor_school')
 
     ### 列表页排序字段
