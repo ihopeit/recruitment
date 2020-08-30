@@ -9,7 +9,6 @@ from django.template import RequestContext, loader
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
 
-
 from jobs.models import Job, Resume
 from jobs.models import Cities, JobTypes
 from jobs.forms import ResumeForm
@@ -25,6 +24,7 @@ def joblist(request):
         job.type_name = JobTypes[job.job_type][1]
     return render(request, 'joblist.html', context)
 
+
 def detail(request, job_id):
     try:
         job = Job.objects.get(pk=job_id)
@@ -38,7 +38,6 @@ class ResumeDetailView(DetailView):
     """   简历详情页    """
     model = Resume
     template_name = 'resume_detail.html'
-    success_url = '/joblist/'
 
 
 class ResumeCreateView(LoginRequiredMixin, CreateView):
