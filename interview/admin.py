@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.http import HttpResponse
 from django.db.models import Q
+from django.contrib import messages
 
 from interview import candidate_field as cf
 from .dingtalk import send
@@ -25,6 +26,7 @@ def notify_interviewer(modeladmin, request, queryset):
         candidates = obj.username + ";" + candidates
         interviewers = obj.first_interviewer_user.username + ";" + interviewers
     send("候选人 %s 进入面试环节，亲爱的面试官，请准备好面试： %s" % (candidates, interviewers) )
+    messages.add_message(request, messages.INFO, '已经成功发送面试通知')
 
 
 notify_interviewer.short_description = u'通知一面面试官'
