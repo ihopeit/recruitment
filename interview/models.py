@@ -1,14 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from jobs.models import DEGREE_TYPE
+
 # 第一轮面试结果
 FIRST_INTERVIEW_RESULT_TYPE = ((u'建议复试', u'建议复试'), (u'待定', u'待定'), (u'放弃', u'放弃'))
 
 # 复试面试建议
 INTERVIEW_RESULT_TYPE = ((u'建议录用', u'建议录用'), (u'待定', u'待定'), (u'放弃', u'放弃'))
 
-# 候选人学历
-DEGREE_TYPE = ((u'本科', u'本科'), (u'硕士', u'硕士'), (u'博士', u'博士'))
 
 # HR终面结论
 HR_SCORE_TYPE = (('S', 'S'), ('A', 'A'), ('B', 'B'), ('C', 'C'))
