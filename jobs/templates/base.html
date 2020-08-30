@@ -1,5 +1,15 @@
 <!--jobs/templates/base.html-->
 
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
 <h1 style="margin:auto; width:50%;"> 匠果科技开放职位  </h1>
 <p></p>
 

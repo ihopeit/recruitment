@@ -6,6 +6,9 @@
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
 
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
 <h1>简历详细信息 </h1>
 
 <div> 姓名: {{ object.username }} </div> <div>城市： {{ object.city }}</div> <div>手机号码: {{ object.phone }}</div>
