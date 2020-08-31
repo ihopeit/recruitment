@@ -3,3 +3,4 @@ django-python3-ldap==0.11.3
 DingtalkChatbot==1.5.1
 django-grappelli==2.14.2
 django-registration-redux==2.8
+django-bootstrap4==2.2.0
