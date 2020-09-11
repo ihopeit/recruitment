@@ -22,6 +22,7 @@ from django.utils.translation import gettext as _
 urlpatterns = [
     url(r"^", include("jobs.urls")),
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
+    path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     url(r'^accounts/', include('registration.backends.simple.urls')),
 ]
