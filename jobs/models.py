@@ -38,7 +38,7 @@ class Job(models.Model):
 
     class Meta:
         verbose_name = _('职位')
-        verbose_name_plural = u'职位列表'
+        verbose_name_plural = _('职位列表')
 
 
 class Resume(models.Model):
@@ -52,11 +52,11 @@ class Resume(models.Model):
     gender = models.CharField(max_length=135, blank=True, verbose_name=_('性别'))
 
     # 学校与学历信息
-    bachelor_school = models.CharField(max_length=135, blank=True, verbose_name=u'本科学校')
-    master_school = models.CharField(max_length=135, blank=True, verbose_name=u'研究生学校')
+    bachelor_school = models.CharField(max_length=135, blank=True, verbose_name=_('本科学校'))
+    master_school = models.CharField(max_length=135, blank=True, verbose_name=_('研究生学校'))
     doctor_school = models.CharField(max_length=135, blank=True, verbose_name=u'博士生学校')
-    major = models.CharField(max_length=135, blank=True, verbose_name=u'专业')
-    degree = models.CharField(max_length=135, choices=DEGREE_TYPE, blank=True, verbose_name=u'学历')
+    major = models.CharField(max_length=135, blank=True, verbose_name=_('专业'))
+    degree = models.CharField(max_length=135, choices=DEGREE_TYPE, blank=True, verbose_name=_('学历'))
     created_date = models.DateTimeField(verbose_name="创建日期", default=datetime.now)
     modified_date = models.DateTimeField(verbose_name="修改日期", default=datetime.now)
 
@@ -67,4 +67,4 @@ class Resume(models.Model):
 
     class Meta:
         verbose_name = _('简历')
-        verbose_name_plural = u'简历列表'
+        verbose_name_plural = _('简历列表')

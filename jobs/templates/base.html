@@ -26,7 +26,7 @@
 {% endif %}
 
 {% if user.is_authenticated %}
-<p>{% blocktranslate %} 终于等到你 {{ user.username }}, 期待加入我们，用技术去探索一个新世界 {% endblocktranslate %}</p>
+<p>{% blocktranslate with user_name=user.username %} 终于等到你 {{ user_name }}, 期待加入我们，用技术去探索一个新世界 {% endblocktranslate %}</p>
 {% else %}
 <p>{% translate "欢迎你，期待加入我们，登陆后可以提交简历." %}</p>
 {% endif %}

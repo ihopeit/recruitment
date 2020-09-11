@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-11 14:05+0800\n"
+"POT-Creation-Date: 2020-09-11 14:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,10 @@ msgstr "Modified date"
 msgid "职位"
 msgstr "Position"
 
+#: jobs/models.py:41
+msgid "职位列表"
+msgstr "Position list"
+
 #: jobs/models.py:45
 msgid "姓名"
 msgstr "Name"
@@ -86,9 +90,29 @@ msgstr "Origin city"
 msgid "性别"
 msgstr "Gender"
 
+#: jobs/models.py:55
+msgid "本科学校"
+msgstr "Bachelor School"
+
+#: jobs/models.py:56
+msgid "研究生学校"
+msgstr "Graduate School"
+
+#: jobs/models.py:58
+msgid "专业"
+msgstr "Major"
+
+#: jobs/models.py:59
+msgid "学历"
+msgstr "Degree"
+
 #: jobs/models.py:69
 msgid "简历"
 msgstr "Resume"
+
+#: jobs/models.py:70
+msgid "简历列表"
+msgstr "Resume list"
 
 #: jobs/templates/base.html:15
 msgid "匠果科技开放职位"
@@ -111,10 +135,11 @@ msgid "Login"
 msgstr "Login"
 
 #: jobs/templates/base.html:29
-#, fuzzy, python-format
-msgid " 终于等到你 %(user.username)s, 期待加入我们，用技术去探索一个新世界 "
-msgstr "Finally you have been here , {{user.username}}, waiting for you to join us, "
-"to explorer a new world together with technology."
+#, python-format
+msgid " 终于等到你 %(user_name)s, 期待加入我们，用技术去探索一个新世界 "
+msgstr ""
+"Finally you have been here , %(user_name)s, welcome to join us, to explorer "
+"a new world together with technology."
 
 #: jobs/templates/base.html:31
 msgid "欢迎你，期待加入我们，登陆后可以提交简历."

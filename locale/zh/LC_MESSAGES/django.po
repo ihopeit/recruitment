@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-11 14:05+0800\n"
+"POT-Creation-Date: 2020-09-11 14:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,10 @@ msgstr ""
 msgid "职位"
 msgstr ""
 
+#: jobs/models.py:41
+msgid "职位列表"
+msgstr ""
+
 #: jobs/models.py:45
 msgid "姓名"
 msgstr ""
@@ -85,8 +89,28 @@ msgstr ""
 msgid "性别"
 msgstr ""
 
+#: jobs/models.py:55
+msgid "本科学校"
+msgstr ""
+
+#: jobs/models.py:56
+msgid "研究生学校"
+msgstr ""
+
+#: jobs/models.py:58
+msgid "专业"
+msgstr ""
+
+#: jobs/models.py:59
+msgid "学历"
+msgstr ""
+
 #: jobs/models.py:69
 msgid "简历"
+msgstr ""
+
+#: jobs/models.py:70
+msgid "简历列表"
 msgstr ""
 
 #: jobs/templates/base.html:15
@@ -111,7 +135,7 @@ msgstr "登录"
 
 #: jobs/templates/base.html:29
 #, python-format
-msgid " 终于等到你 %(user.username)s, 期待加入我们，用技术去探索一个新世界 "
+msgid " 终于等到你 %(user_name)s, 期待加入我们，用技术去探索一个新世界 "
 msgstr ""
 
 #: jobs/templates/base.html:31
