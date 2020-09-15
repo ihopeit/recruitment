@@ -32,6 +32,25 @@ python manage.py import_candidates --path /path/to/your/file.csv
 在 settings/local.py 或者 settings/production.py 中配置群机器人的 WebHook ， 用来发送消息通知。
 DINGTALK_WEB_HOOK = "https://oapi.dingtalk.com/robot/send?access_token=xsxxx"
 
+### 集成 Sentry
+安装 sentry-sdk
+    $ pip install --upgrade sentry-sdk
+
+在 settings/local.py, settings/production.py 中加上 sentry 的初始化配置
+
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn="http://xxx@recruit.xxxx.com:9000/2",
+    integrations=[DjangoIntegration()],
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)
+
+
 ### 基础功能列表
 * 管理职位
 * 浏览职位
