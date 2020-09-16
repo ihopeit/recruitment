@@ -44,7 +44,9 @@ from sentry_sdk.integrations.django import DjangoIntegration
 sentry_sdk.init(
     dsn="http://xxx@recruit.xxxx.com:9000/2",
     integrations=[DjangoIntegration()],
-
+    # performance tracing sample rate, 采样率, 生产环境访问量过大时，建议调小（不用每一个URL请求都记录性能）
+    traces_sample_rate=1.0, # 
+    
     # If you wish to associate users to errors (assuming you are using
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
