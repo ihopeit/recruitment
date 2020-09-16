@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-11 14:34+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: jobs/models.py:30
+msgid "职位类别"
+msgstr "Job type"
+
+#: jobs/models.py:31
+msgid "职位名称"
+msgstr "Job name"
+
+#: jobs/models.py:32
+msgid "工作地点"
+msgstr "Work location"
+
+#: jobs/models.py:33
+msgid "职位职责"
+msgstr "Job responsibility"
+
+#: jobs/models.py:34
+msgid "职位要求"
+msgstr "Job requirements"
+
+#: jobs/models.py:35
+msgid "创建人"
+msgstr "Creator"
+
+#: jobs/models.py:36
+msgid "创建日期"
+msgstr "Created date"
+
+#: jobs/models.py:37
+msgid "修改日期"
+msgstr "Modified date"
+
+#: jobs/models.py:40
+msgid "职位"
+msgstr "Position"
+
+#: jobs/models.py:41
+msgid "职位列表"
+msgstr "Position list"
+
+#: jobs/models.py:45
+msgid "姓名"
+msgstr "Name"
+
+#: jobs/models.py:46
+msgid "申请人"
+msgstr "Applicant"
+
+#: jobs/models.py:47
+msgid "城市"
+msgstr "City"
+
+#: jobs/models.py:48
+msgid "手机号码"
+msgstr "Mobile"
+
+#: jobs/models.py:49
+msgid "邮箱"
+msgstr "Email"
+
+#: jobs/models.py:50
+msgid "应聘职位"
+msgstr "Apply position"
+
+#: jobs/models.py:51
+msgid "生源地"
+msgstr "Origin city"
+
+#: jobs/models.py:52
+msgid "性别"
+msgstr "Gender"
+
+#: jobs/models.py:55
+msgid "本科学校"
+msgstr "Bachelor School"
+
+#: jobs/models.py:56
+msgid "研究生学校"
+msgstr "Graduate School"
+
+#: jobs/models.py:58
+msgid "专业"
+msgstr "Major"
+
+#: jobs/models.py:59
+msgid "学历"
+msgstr "Degree"
+
+#: jobs/models.py:69
+msgid "简历"
+msgstr "Resume"
+
+#: jobs/models.py:70
+msgid "简历列表"
+msgstr "Resume list"
+
+#: jobs/templates/base.html:15
+msgid "匠果科技开放职位"
+msgstr "Jiangguo Technology open positions"
+
+#: jobs/templates/base.html:19
+msgid "Homepage"
+msgstr "Homepage"
+
+#: jobs/templates/base.html:20
+msgid "job list"
+msgstr "Job list"
+
+#: jobs/templates/base.html:23
+msgid "Logout"
+msgstr "Logout"
+
+#: jobs/templates/base.html:25
+msgid "Login"
+msgstr "Login"
+
+#: jobs/templates/base.html:29
+#, python-format
+msgid " 终于等到你 %(user_name)s, 期待加入我们，用技术去探索一个新世界 "
+msgstr ""
+"Finally you have been here , %(user_name)s, welcome to join us, to explorer "
+"a new world together with technology."
+
+#: jobs/templates/base.html:31
+msgid "欢迎你，期待加入我们，登陆后可以提交简历."
+msgstr ""
+"Welcome, waiting for you to join us, you can submit resume after login."
+
+#: jobs/templates/base.html:47
+msgid "language:"
+msgstr "language"
+
+#: jobs/templates/base.html:48
+msgid "Switch"
+msgstr "Switch"
+
+#: recruitment/urls.py:30
+msgid "匠果科技招聘管理系统"
+msgstr "Jiangguo technology recruiting management system"
+
+#: settings/base.py:170
+msgid "Chinese"
+msgstr "Chinese"
+
+#: settings/base.py:171
+msgid "English"
+msgstr "English"
