@@ -34,6 +34,19 @@ def detail(request, job_id):
     return render(request, 'job.html', {'job': job})
 
 
+
+'''
+    直接返回  HTML 内容的视图 （这段代码返回的页面有 XSS 漏洞，能够被攻击者利用）
+'''
+def detail_resume(request, resume_id):
+    try:
+        resume = Resume.objects.get(pk=resume_id)
+        content = "name: %s <br>  introduction: %s <br>" % (resume.username, resume.candidate_introduction)
+        return HttpResponse(content)
+    except Resume.DoesNotExist:
+        raise Http404("resume does not exist")
+
+
 class ResumeDetailView(DetailView):
     """   简历详情页    """
     model = Resume
