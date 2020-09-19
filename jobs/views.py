@@ -7,6 +7,7 @@ from django.http import Http404
 from django.template import RequestContext, loader
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 from django.views.generic.detail import DetailView
 
 from jobs.models import Job, Resume
@@ -15,6 +16,10 @@ from jobs.forms import ResumeForm
 from django.views.generic.edit import CreateView
 from django.http import HttpResponseRedirect
 
+from django.contrib.auth.models import User
+
+from django.contrib.auth.decorators import permission_required, login_required
+from django.views.decorators.csrf import csrf_exempt
 
 def joblist(request):
     job_list = Job.objects.order_by('job_type')
@@ -33,6 +38,28 @@ def detail(request, job_id):
         raise Http404("Job does not exist")
     return render(request, 'job.html', {'job': job})
 
+
+from django.contrib.auth.models import Group
+
+# 这个 URL 仅允许有 创建用户权限的用户访问
+@csrf_exempt
+@permission_required('auth.user_add')
+def create_hr_user(request):
+    if request.method == "GET":
+        return render(request, 'create_hr.html', {})
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        
+        hr_group = Group.objects.get(name='hr') 
+        user = User(is_superuser=False, username=username, is_active=True, is_staff=True)
+        user.set_password(password)
+        user.save()
+        user.groups.add(hr_group)
+
+        messages.add_message(request, messages.INFO, 'user created %s' % username)
+        return render(request, 'create_hr.html')
+    return render(request, 'create_hr.html')
 
 
 '''

