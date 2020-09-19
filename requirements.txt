@@ -7,3 +7,4 @@ django-bootstrap4==2.2.0
 djangorestframework==3.11.1
 django-filter==2.3.0
 Markdown==3.2.2
+django-redis==4.12.1

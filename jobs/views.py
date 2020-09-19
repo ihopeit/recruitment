@@ -21,6 +21,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import permission_required, login_required
 from django.views.decorators.csrf import csrf_exempt
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 def joblist(request):
     job_list = Job.objects.order_by('job_type')
     context =  {'job_list': job_list}
@@ -34,6 +38,7 @@ def detail(request, job_id):
     try:
         job = Job.objects.get(pk=job_id)
         job.city_name = Cities[job.job_city][1]
+        logger.info('job retrieved from db :%s' % job_id)
     except Job.DoesNotExist:
         raise Http404("Job does not exist")
     return render(request, 'job.html', {'job': job})
