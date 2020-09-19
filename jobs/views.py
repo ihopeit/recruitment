@@ -42,7 +42,6 @@ def detail(request, job_id):
 from django.contrib.auth.models import Group
 
 # 这个 URL 仅允许有 创建用户权限的用户访问
-@csrf_exempt
 @permission_required('auth.user_add')
 def create_hr_user(request):
     if request.method == "GET":
