@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-11 14:34+0800\n"
+"POT-Creation-Date: 2020-09-19 10:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#. Translators: 职位实体的翻译
 #: jobs/models.py:30
 msgid "职位类别"
 msgstr "Job type"
@@ -58,59 +59,60 @@ msgstr "Position"
 msgid "职位列表"
 msgstr "Position list"
 
-#: jobs/models.py:45
+#. Translators: 简历实体的翻译
+#: jobs/models.py:46
 msgid "姓名"
 msgstr "Name"
 
-#: jobs/models.py:46
+#: jobs/models.py:47
 msgid "申请人"
 msgstr "Applicant"
 
-#: jobs/models.py:47
+#: jobs/models.py:48
 msgid "城市"
 msgstr "City"
 
-#: jobs/models.py:48
+#: jobs/models.py:49
 msgid "手机号码"
 msgstr "Mobile"
 
-#: jobs/models.py:49
+#: jobs/models.py:50
 msgid "邮箱"
 msgstr "Email"
 
-#: jobs/models.py:50
+#: jobs/models.py:51
 msgid "应聘职位"
 msgstr "Apply position"
 
-#: jobs/models.py:51
+#: jobs/models.py:52
 msgid "生源地"
 msgstr "Origin city"
 
-#: jobs/models.py:52
+#: jobs/models.py:53
 msgid "性别"
 msgstr "Gender"
 
-#: jobs/models.py:55
+#: jobs/models.py:56
 msgid "本科学校"
 msgstr "Bachelor School"
 
-#: jobs/models.py:56
+#: jobs/models.py:57
 msgid "研究生学校"
 msgstr "Graduate School"
 
-#: jobs/models.py:58
+#: jobs/models.py:59
 msgid "专业"
 msgstr "Major"
 
-#: jobs/models.py:59
+#: jobs/models.py:60
 msgid "学历"
 msgstr "Degree"
 
-#: jobs/models.py:69
+#: jobs/models.py:70
 msgid "简历"
 msgstr "Resume"
 
-#: jobs/models.py:70
+#: jobs/models.py:71
 msgid "简历列表"
 msgstr "Resume list"
 

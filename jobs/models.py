@@ -25,8 +25,8 @@ Cities = [
 ]
 
 
-# Translators: for Job model
 class Job(models.Model):
+    # Translators: 职位实体的翻译
     job_type = models.SmallIntegerField(blank=False, choices=JobTypes, verbose_name=_("职位类别"))
     job_name = models.CharField(max_length=250, blank=False, verbose_name=_("职位名称"))
     job_city = models.SmallIntegerField(choices=Cities, blank=False, verbose_name=_("工作地点"))
@@ -42,6 +42,7 @@ class Job(models.Model):
 
 
 class Resume(models.Model):
+    # Translators: 简历实体的翻译
     username = models.CharField(max_length=135, verbose_name=_('姓名'))
     applicant = models.ForeignKey(User, verbose_name=_("申请人"), null=True, on_delete=models.SET_NULL)
     city = models.CharField(max_length=135, verbose_name=_('城市'))
