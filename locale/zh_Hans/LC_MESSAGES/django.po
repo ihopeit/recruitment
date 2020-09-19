@@ -117,7 +117,7 @@ msgstr ""
 
 #: jobs/templates/base.html:15
 msgid "匠果科技开放职位"
-msgstr "浆果科技开放职位"
+msgstr "匠果科技开放职位"
 
 #: jobs/templates/base.html:19
 msgid "Homepage"
