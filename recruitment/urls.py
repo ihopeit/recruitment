@@ -18,13 +18,52 @@ from django.contrib import admin
 from django.urls import path
 from django.utils.translation import gettext as _
 
+from django.contrib.auth.models import User
+from jobs.models import Job
+from rest_framework import routers, serializers, viewsets
+
+# Serializers define the API representation.
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['url', 'username', 'email', 'is_staff']
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class JobSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Job
+        fields = '__all__'
+
+
+class JobViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Job.objects.all()
+    serializer_class = JobSerializer
+
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'jobs', JobViewSet)
 
 urlpatterns = [
     url(r"^", include("jobs.urls")),
+
+    # django rest api & api auth (login/logout)
+    path('api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls')),
+
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
-    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),    
 ]
 
 admin.site.site_header = _('匠果科技招聘管理系统')

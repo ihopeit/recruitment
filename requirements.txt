@@ -4,3 +4,6 @@ DingtalkChatbot==1.5.1
 django-grappelli==2.14.2
 django-registration-redux==2.8
 django-bootstrap4==2.2.0
+djangorestframework==3.11.1
+django-filter==2.3.0
+Markdown==3.2.2
