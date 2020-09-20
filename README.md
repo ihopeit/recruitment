@@ -52,6 +52,30 @@ sentry_sdk.init(
     send_default_pii=True
 )
 
+### 集成 Celery
+
+$ brew install redis  # on mac
+$ sudo apt-get install redis # on ubuntu/debian
+
+$ pip install -U celery
+$ pip install "celery[redis,auth,msgpack]"
+$ pip install -U flower
+
+## local.py, production.py 里面添加 Celery 配置
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Shanghai'
+CELERYD_MAX_TASKS_PER_CHILD = 10
+CELERYD_LOG_FILE = os.path.join(BASE_DIR, "logs", "celery_work.log")
+CELERYBEAT_LOG_FILE = os.path.join(BASE_DIR, "logs", "celery_beat.log")
+
+启动本地 Celery 异步任务服务 & Flower 监控服务
+$ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment worker -l info
+
+$ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment flower 
 
 ### 基础功能列表
 * 管理职位
