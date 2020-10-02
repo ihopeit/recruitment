@@ -80,7 +80,7 @@ $ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment flower
 ### 基础功能列表
 * 管理职位
 * 浏览职位
-* 投递职位 [TODO]
+* 投递职位 
 * 维护候选人信息
 * 导入候选人信息
 * 面试官录入面试反馈
@@ -95,8 +95,9 @@ $ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment flower
 * 面试官的数据权限（能录入自己需要反馈的面试环节的内容），数据集权限（看到自己需要评估的候选人），功能权限（导出数据）控制
 
 ### 扩展功能 
-* 通知面试官面试 [TODO]
-* 列表页可以查看简历 [TODO]
-* 国际化 [TODO]
-* 错误日志上报 [TODO]
-* 异步任务与定时任务 [TODO]
+* 通知面试官面试 
+* 列表页可以查看简历
+* 国际化
+* 错误日志上报
+* 提供 Rest API (Celery Rest Framework)
+* 异步任务与定时任务 (Celery集成)
