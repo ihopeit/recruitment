@@ -38,5 +38,6 @@ nosetests.xml
 .pydevproject
 .idea
 settings/local.py
-
+celerybeat-schedule.db
+celerybeat.pid
 db.sqlite3

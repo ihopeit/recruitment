@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'jobs',
     'interview',
     'django_python3_ldap',
+    'django_celery_beat',
 ]
 
 REST_FRAMEWORK = {

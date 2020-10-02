@@ -10,3 +10,4 @@ Markdown==3.2.2
 django-redis==4.12.1
 celery==4.4.7
 flower==0.9.5
+django-celery-beat==2.0.0

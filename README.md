@@ -77,6 +77,9 @@ $ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment worker -l info
 
 $ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment flower 
 
+celery 从  4.x 升级到 5.x
+$ celery upgrade settings path/to/settings.py
+
 ### 基础功能列表
 * 管理职位
 * 浏览职位
