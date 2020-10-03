@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import path
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from django.contrib.auth.models import User
 from jobs.models import Job
