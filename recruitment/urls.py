@@ -66,4 +66,15 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.simple.urls')),    
 ]
 
+from django.conf.urls import include, url
+from django.conf import settings
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+            path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
+
+
+
 admin.site.site_header = _('匠果科技招聘管理系统')
