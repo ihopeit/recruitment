@@ -44,7 +44,7 @@ class ResumeAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {'fields': (
             "applicant", ("username", "city", "phone"),
-            ("email", "apply_position", "born_address", "gender", ),
+            ("email", "apply_position", "born_address", "gender", ), ("picture", "attachment",),
             ("bachelor_school", "master_school"), ("major", "degree"), ('created_date', 'modified_date'),
             "candidate_introduction", "work_experience","project_experience",)}),
     )
