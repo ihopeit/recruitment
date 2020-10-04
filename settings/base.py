@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    #'jobs', ## 应用不能重复注册，后面手工注册 JobConfig，去掉了这一行的注册
-    'jobs.apps.JobConfig',
+    'jobs', ## 应用不能重复注册，下面一行是手工注册 JobConfig
+    #'jobs.apps.JobConfig',
     'interview',
     'django_python3_ldap',
     'django_celery_beat',
