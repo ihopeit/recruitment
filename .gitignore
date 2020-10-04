@@ -42,4 +42,5 @@ nosetests.xml
 settings/local.py
 celerybeat-schedule.db
 celerybeat.pid
+dump.rdb
 db.sqlite3
