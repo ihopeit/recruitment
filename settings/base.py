@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django_python3_ldap',
     'django_celery_beat',
     'django_oss_storage',
+    'recruitment.apps.UniversalManagerApp',
 ]
 
 REST_FRAMEWORK = {
