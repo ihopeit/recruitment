@@ -59,6 +59,7 @@ urlpatterns = [
     # django rest api & api auth (login/logout)
     path('api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^chaining/', include('smart_selects.urls')),
 
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('i18n/', include('django.conf.urls.i18n')),
