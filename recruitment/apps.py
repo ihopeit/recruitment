@@ -1,9 +1,6 @@
 from django.contrib import admin
 from django.apps import apps, AppConfig
 
-import logging
-logger = logging.getLogger(__name__)
-
 class ListAdminMixin(object):
     def __init__(self, model, admin_site):
         # 列表页自动显示所有的字段：
