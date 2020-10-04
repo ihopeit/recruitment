@@ -43,12 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'jobs',
+    #'jobs', ## 应用不能重复注册，后面手工注册 JobConfig，去掉了这一行的注册
+    'jobs.apps.JobConfig',
     'interview',
     'django_python3_ldap',
     'django_celery_beat',
     'django_oss_storage',
     'recruitment.apps.UniversalManagerApp',
+
 ]
 
 REST_FRAMEWORK = {
