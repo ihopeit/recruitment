@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^g&1yh(qg&d_@1b3as)#5z^1u67=ndqd9rb-qn+8xs(sqnpj*v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost","127.0.0.1"]
 
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django_oss_storage',
     'recruitment.apps.UniversalManagerApp',
+    'running',
 
 ]
 
@@ -61,7 +62,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-CACHES_LOCAL = {
+CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
         'LOCATION': 'unique-snowflake',
@@ -74,8 +75,8 @@ CACHES_LOCAL = {
 }
 
 CACHE_MIDDLEWARE_SECONDS = 60  # default cache time for the whole website
-
-CACHES = {
+# redis cache is disabled, change "CACHES_redis" to "CACHES" to enable it
+CACHES_redis = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/1",
@@ -246,6 +247,7 @@ LOCALE_PATHS = (
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
 
