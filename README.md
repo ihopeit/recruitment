@@ -15,8 +15,8 @@ https://docs.djangoproject.com/
 
 ### 如何运行
 本地和生产环境分别运行如下命令:
-python ./manage.py runserver 127.0.0.1:8000 --settings=settings.local
-python ./manage.py runserver 127.0.0.1:8000 --settings=settings.production
+* python ./manage.py runserver 127.0.0.1:8000 --settings=settings.local
+* python ./manage.py runserver 127.0.0.1:8000 --settings=settings.production
 
 然后可以通过访问如下两个页面 
 * http://127.0.0.1:8000 首页
@@ -24,7 +24,7 @@ python ./manage.py runserver 127.0.0.1:8000 --settings=settings.production
 
 ### 命令行导入候选人
 
-python manage.py import_candidates --path /path/to/your/file.csv
+* python manage.py import_candidates --path /path/to/your/file.csv
 
 ### OpenLDAP/Active Directory集成
 * 1.settings/base.py中配置LDAP相关的映射信息 （用户尝试登陆时自动创建账号，但创建的账号 is_staff = false,不能登陆系统）
@@ -41,7 +41,7 @@ DINGTALK_WEB_HOOK = "https://oapi.dingtalk.com/robot/send?access_token=xsxxx"
     $ pip install --upgrade sentry-sdk
 
 在 settings/local.py, settings/production.py 中加上 sentry 的初始化配置
-
+```python
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -55,17 +55,20 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
+```
 
 ### 集成 Celery
 
-$ brew install redis  # on mac
-$ sudo apt-get install redis # on ubuntu/debian
+* $ brew install redis  # on mac
+* $ sudo apt-get install redis # on ubuntu/debian
 
-$ pip install -U celery
-$ pip install "celery[redis,auth,msgpack]"
-$ pip install -U flower
+* $ pip install -U celery
+* $ pip install "celery[redis,auth,msgpack]"
+* $ pip install -U flower
+
 
 ## local.py, production.py 里面添加 Celery 配置
+```python
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -75,14 +78,15 @@ CELERY_TIMEZONE = 'Asia/Shanghai'
 CELERYD_MAX_TASKS_PER_CHILD = 10
 CELERYD_LOG_FILE = os.path.join(BASE_DIR, "logs", "celery_work.log")
 CELERYBEAT_LOG_FILE = os.path.join(BASE_DIR, "logs", "celery_beat.log")
+```
 
 启动本地 Celery 异步任务服务 & Flower 监控服务
-$ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment worker -l info
+* $ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment worker -l info
 
-$ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment flower 
+* $ DJANGO_SETTINGS_MODULE=settings.local celery -A recruitment flower 
 
 celery 从  4.x 升级到 5.x
-$ celery upgrade settings path/to/settings.py
+* $ celery upgrade settings path/to/settings.py
 
 ### 基础功能列表
 * 管理职位

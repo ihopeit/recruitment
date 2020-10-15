@@ -39,7 +39,7 @@ nosetests.xml
 .project
 .pydevproject
 .idea
-#settings/local.py
+settings/local.py
 celerybeat-schedule.db
 celerybeat.pid
 dump.rdb
