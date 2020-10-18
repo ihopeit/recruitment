@@ -7,8 +7,12 @@ django-bootstrap4==2.2.0
 djangorestframework==3.11.1
 django-filter==2.3.0
 Markdown==3.2.2
+sentry-sdk==0.19.0
 django-redis==4.12.1
 celery==4.4.7
 flower==0.9.5
 django-celery-beat==2.0.0
 django-oss-storage==1.1.1
+django-smart-selects==1.5.9
+django-debug-toolbar==3.1.1
+Pillow==7.0.0
