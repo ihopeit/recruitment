@@ -49,8 +49,9 @@ INSTALLED_APPS = [
     'django_python3_ldap',
     'django_celery_beat',
     'django_oss_storage',
-    'recruitment.apps.UniversalManagerApp',
-    'running',
+    # uncomment the line of "UniversalManagerApp" to automatically register all models
+    #'recruitment.apps.UniversalManagerApp',
+    #'running',
 
 ]
 
