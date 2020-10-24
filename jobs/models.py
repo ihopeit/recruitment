@@ -33,8 +33,8 @@ class Job(models.Model):
     job_responsibility = models.TextField(max_length=1024, verbose_name=_("职位职责"))
     job_requirement = models.TextField(max_length=1024, blank=False, verbose_name=_("职位要求"))
     creator = models.ForeignKey(User, verbose_name=_("创建人"), null=True, on_delete=models.SET_NULL)
-    created_date = models.DateTimeField(verbose_name=_("创建日期"), default=datetime.now)
-    modified_date = models.DateTimeField(verbose_name=_("修改日期"), default=datetime.now)
+    created_date = models.DateTimeField(verbose_name=_("创建日期"), auto_now_add=True)
+    modified_date = models.DateTimeField(verbose_name=_("修改日期"), auto_now=True)
 
     class Meta:
         verbose_name = _('职位')
@@ -61,7 +61,7 @@ class Resume(models.Model):
     major = models.CharField(max_length=135, blank=True, verbose_name=_('专业'))
     degree = models.CharField(max_length=135, choices=DEGREE_TYPE, blank=True, verbose_name=_('学历'))
     created_date = models.DateTimeField(verbose_name="创建日期", default=datetime.now)
-    modified_date = models.DateTimeField(verbose_name="修改日期", default=datetime.now)
+    modified_date = models.DateTimeField(verbose_name="修改日期", auto_now=True)
 
     # 候选人自我介绍，工作经历，项目经历
     candidate_introduction = models.TextField(max_length=1024, blank=True, verbose_name=u'自我介绍')
