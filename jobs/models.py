@@ -40,6 +40,9 @@ class Job(models.Model):
         verbose_name = _('职位')
         verbose_name_plural = _('职位列表')
 
+    def __str__(self):
+        return self.job_name
+
 
 class Resume(models.Model):
     # Translators: 简历实体的翻译
@@ -71,3 +74,6 @@ class Resume(models.Model):
     class Meta:
         verbose_name = _('简历')
         verbose_name_plural = _('简历列表')
+    
+    def __str__(self):
+        return self.username

@@ -34,8 +34,8 @@ ALLOWED_HOSTS = ["localhost","127.0.0.1"]
 
 INSTALLED_APPS = [
     'bootstrap4',
-    #'grappelli',
-    'simpleui',
+    'grappelli',
+    #'simpleui',
     'registration',
     'django.contrib.admin',
     'django.contrib.auth',
