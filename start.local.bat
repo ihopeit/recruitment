@@ -1,4 +1,4 @@
-# django-admin --settings=settings.local compilemessages 
+# django-admin compilemessages 
 ## if local config file does not exist, clond one:
 test -f settings/local.py || echo "=== warning: local.py does not exist, will initialize the file, please update the configs ==="
 test -f settings/local.py || cp settings/production.py settings/local.py

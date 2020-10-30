@@ -64,7 +64,10 @@ urlpatterns = [
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
-    url(r'^accounts/', include('registration.backends.simple.urls')),    
+    url(r'^accounts/', include('registration.backends.simple.urls')),   
+
+    # django_prometheus
+    url('', include('django_prometheus.urls')), 
 ]
 
 from django.conf.urls import include, url

@@ -19,3 +19,4 @@ django-debug-toolbar==3.1.1
 Pillow==7.0.0
 django-simpleui==2020.9.26
 uvicorn==0.12.2
+django-prometheus==2.1.0
