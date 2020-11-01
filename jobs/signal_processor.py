@@ -7,7 +7,7 @@ from interview.dingtalk import send
 import json, logging
 logger = logging.getLogger(__name__)
 
-# 使用 annotation 来注册 信号处理器
+# 使用 decorator 来注册 信号处理器
 @receiver(signal=post_save, sender=Resume, dispatch_uid="resume_post_save_dispatcher")
 @receiver(signal=post_save, sender=Job, dispatch_uid="job_post_save_dispatcher")
 def post_save_callback(sender, instance=None, created=False, **kwarg):
