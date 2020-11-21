@@ -35,7 +35,6 @@ ALLOWED_HOSTS = ["localhost","127.0.0.1"]
 INSTALLED_APPS = [
     'bootstrap4',
     'grappelli',
-    #'simpleui',
     'registration',
     'django_prometheus',
     'django.contrib.admin',
@@ -149,10 +148,11 @@ LOGGING = {
 MIDDLEWARE = [
     'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'interview.performance.PerformanceAndExceptionLoggerMiddleware',
+    
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
@@ -161,10 +161,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
     'django_prometheus.middleware.PrometheusAfterMiddleware',
 
 ]
+
 
 ROOT_URLCONF = 'recruitment.urls'
 
