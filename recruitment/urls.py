@@ -64,6 +64,10 @@ urlpatterns = [
 
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('i18n/', include('django.conf.urls.i18n')),
+    
+    # 使用 login_with_captcha 作为管理员的登陆页
+    url(r'^admin/login/?$', views.login_with_captcha, name='adminlogin'),
+
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),   
 
