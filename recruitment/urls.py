@@ -20,6 +20,7 @@ from django.utils.translation import gettext_lazy as _
 
 from django.contrib.auth.models import User
 from jobs.models import Job
+from . import views
 from rest_framework import routers, serializers, viewsets
 
 # Serializers define the API representation.
@@ -65,6 +66,10 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),   
+
+    path('captcha/', include('captcha.urls')),
+
+    path("clogin/", views.login_with_captcha, name="clogin"),
 
     # django_prometheus
     path('', include('django_prometheus.urls')), 

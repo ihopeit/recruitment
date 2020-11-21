@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # uncomment the line of "UniversalManagerApp" to automatically register all models
     #'recruitment.apps.UniversalManagerApp',
     #'running',
+    'captcha',
 
 ]
 
@@ -172,7 +173,7 @@ ROOT_URLCONF = 'recruitment.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'recruitment/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
