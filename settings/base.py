@@ -57,6 +57,11 @@ INSTALLED_APPS = [
 
 ]
 
+# CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+# CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
+
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.word_challenge'
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.

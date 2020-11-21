@@ -18,15 +18,22 @@ class CaptchaLoginForm(AuthenticationForm):
     # password = forms.CharField(widget=forms.PasswordInput, label='密码')
     captcha = CaptchaField(label='验证码')
 
+max_failed_login_count = 3
+
 def login_with_captcha(request):
     if request.POST:
-        form = CaptchaLoginForm(data=request.POST)
-        #form = AuthenticationForm(data=request.POST)
+        failed_login_count = request.session.get('failed_login_count', 0)
+
+        # 没有连续的登陆失败， 使用默认的登陆页； 连续 n 次登陆失败， 要求输入验证码
+        if failed_login_count >= max_failed_login_count :
+            form = CaptchaLoginForm(data=request.POST)
+        else:
+            form = AuthenticationForm(data=request.POST)
 
         # Validate the form: the captcha field will automatically
         # check the input
         if form.is_valid():
-            logger.info(" ===== validate ok %s" % (form.cleaned_data["username"]) )
+            request.session['failed_login_count'] = 0
             # authenticate user with credentials
             user = authenticate(username=form.cleaned_data["username"], password=form.cleaned_data["password"])
             if user is not None:
@@ -34,10 +41,18 @@ def login_with_captcha(request):
                login(request,user)
                return HttpResponseRedirect(reverse_lazy('admin:index'))
         else:
-            logger.warning(" ----- not valid")
+            failed_login_count += 1
+            request.session['failed_login_count'] = failed_login_count
+            logger.warning(" ----- failed login for user: %s, failed times:%s" %  (form.data["username"], failed_login_count) )
+            if failed_login_count >= max_failed_login_count :
+                form = CaptchaLoginForm(request.POST)
             messages.add_message(request, messages.INFO, 'Not a valid request')
     else:
-        form = CaptchaLoginForm(request.POST)
-        #form = AuthenticationForm()
+        ## 没有连续的登陆失败， 使用默认的登陆页； 连续 n 次登陆失败， 要求输入验证码
+        failed_login_count = request.session.get('failed_login_count', 0)
+        if failed_login_count >= max_failed_login_count :
+            form = CaptchaLoginForm(request.POST)
+        else:
+            form = AuthenticationForm()
 
     return render(request, 'login.html', {'form': form})
