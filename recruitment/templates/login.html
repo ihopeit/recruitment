@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="post">
+<form method="post" style="margin-left: 10px;">
   {% csrf_token %}
   {{ form.as_p }}
 
