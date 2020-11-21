@@ -54,20 +54,20 @@ router.register(r'users', UserViewSet)
 router.register(r'jobs', JobViewSet)
 
 urlpatterns = [
-    url(r"^", include("jobs.urls")),
+    path("", include("jobs.urls")),
 
     # django rest api & api auth (login/logout)
     path('api/', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls')),
-    url(r'^chaining/', include('smart_selects.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('chaining/', include('smart_selects.urls')),
 
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
-    url(r'^accounts/', include('registration.backends.simple.urls')),   
+    path('accounts/', include('registration.backends.simple.urls')),   
 
     # django_prometheus
-    url('', include('django_prometheus.urls')), 
+    path('', include('django_prometheus.urls')), 
 ]
 
 from django.conf.urls import include, url
