@@ -9,6 +9,8 @@ from django.shortcuts import render
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse_lazy
 
+from ratelimit.decorators import ratelimit
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -20,6 +22,7 @@ class CaptchaLoginForm(AuthenticationForm):
 
 max_failed_login_count = 3
 
+@ratelimit(key='ip', rate='5/m', block=True)
 def login_with_captcha(request):
     if request.POST:
         failed_login_count = request.session.get('failed_login_count', 0)

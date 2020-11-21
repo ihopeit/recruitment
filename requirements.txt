@@ -21,3 +21,4 @@ django-simpleui==2020.9.26
 uvicorn==0.12.2
 django-prometheus==2.1.0
 django-simple-captcha==0.5.13
+django-ratelimit==3.0.1
