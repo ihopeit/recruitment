@@ -1,5 +1,7 @@
 settings/local.py
 .git
+.history
+**/__pycache__
 slides
 snapshot
 media

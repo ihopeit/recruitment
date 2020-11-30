@@ -134,10 +134,10 @@ celery 从  4.x 升级到 5.x
 
 ### run in docker 
 交互运行:
-docker run -it --rm -p 8000:8000  --entrypoint /bin/bash  ihopeit/recruitment-base:0.8
+docker run -it --rm -p 8000:8000  --entrypoint /bin/sh  ihopeit/recruitment-base:0.8
 
 指定本地源码目录:
-docker run -it --rm -p 8000:8000 -v "$(pwd)":/data/recruitment  --entrypoint /bin/bash  ihopeit/recruitment-base:0.8
+docker run -it --rm -p 8000:8000 -v "$(pwd)":/data/recruitment  --entrypoint /bin/sh  ihopeit/recruitment-base:0.8
 
 指定加载源码 && 环境变量：
 docker run --rm -p 8000:8000 -v "$(pwd)":/data/recruitment  --env server_params="--settings=settings.local"  ihopeit/recruitment-base:0.8
