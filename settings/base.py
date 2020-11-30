@@ -27,7 +27,7 @@ SECRET_KEY = '^g&1yh(qg&d_@1b3as)#5z^1u67=ndqd9rb-qn+8xs(sqnpj*v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost","127.0.0.1"]
+ALLOWED_HOSTS = ["localhost","127.0.0.1","*",]
 
 
 # Application definition
@@ -87,7 +87,7 @@ CACHE_MIDDLEWARE_SECONDS = 60  # default cache time for the whole website
 CACHES_redis = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://redis:6379/1",
         'TIMEOUT': 60, # default expire time per api call
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
@@ -205,17 +205,17 @@ DATABASES = {
         'ENGINE': 'django_prometheus.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'running': {
-            'ENGINE': 'django.db.backends.mysql', 
-            'NAME': 'running',                    
-            'USER': 'recruitment',                      
-            'PASSWORD': 'recruitment',                  
-            'HOST': '127.0.0.1',                      
-            'PORT': '3306',
-    },
+    # 'running': {
+    #         'ENGINE': 'django.db.backends.mysql', 
+    #         'NAME': 'running',                    
+    #         'USER': 'recruitment',                      
+    #         'PASSWORD': 'recruitment',                  
+    #         'HOST': 'running',
+    #         'PORT': '3306',
+    # },
 }
 
-DATABASE_ROUTERS = ['settings.router.DatabaseRouter']
+#DATABASE_ROUTERS = ['settings.router.DatabaseRouter']
 
 
 # Password validation

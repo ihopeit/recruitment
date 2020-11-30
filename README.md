@@ -130,3 +130,14 @@ celery 从  4.x 升级到 5.x
 * 错误日志上报
 * 提供 Rest API (Celery Rest Framework)
 * 异步任务与定时任务 (Celery集成)
+
+
+### run in docker 
+交互运行:
+docker run -it --rm -p 8000:8000  --entrypoint /bin/bash  ihopeit/recruitment-base:0.8
+
+指定本地源码目录:
+docker run -it --rm -p 8000:8000 -v "$(pwd)":/data/recruitment  --entrypoint /bin/bash  ihopeit/recruitment-base:0.8
+
+指定加载源码 && 环境变量：
+docker run --rm -p 8000:8000 -v "$(pwd)":/data/recruitment  --env server_params="--settings=settings.local"  ihopeit/recruitment-base:0.8
