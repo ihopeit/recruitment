@@ -70,7 +70,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-CACHES = {
+CACHES_local = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
         'LOCATION': 'unique-snowflake',
@@ -84,7 +84,7 @@ CACHES = {
 
 CACHE_MIDDLEWARE_SECONDS = 60  # default cache time for the whole website
 # redis cache is disabled, change "CACHES_redis" to "CACHES" to enable it
-CACHES_redis = {
+CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://redis:6379/1",
@@ -159,9 +159,9 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    #'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

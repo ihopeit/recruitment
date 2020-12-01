@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  web:
+    image: "ihopeit/django-recruitment:0.8"
+    container_name: recruitment-web
+    command: /bin/sh /data/recruitment/start.local.bat
+    environment:
+      - server_params=--settings=settings.local
+    volumes:
+      - .:/data/recruitment
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - celery
+      - flower
+  redis:
+    image: "redis:alpine"
+    container_name: recruit-redis
+  celery:
+    image: "ihopeit/django-recruitment:0.8"
+    container_name: recruit-celery
+    volumes:
+      - .:/data/recruitment
+    command: /bin/sh /data/recruitment/worker.start.sh
+    depends_on: 
+      - redis
+  flower:
+    image: "ihopeit/django-recruitment:0.8"
+    container_name: recruit-flower
+    ports:
+      - "5555:5555"
+    volumes:
+      - .:/data/recruitment
+    command: /bin/sh /data/recruitment/flower.start.sh
+    depends_on: 
+      - redis
