@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     command: /bin/sh /data/recruitment/start.local.bat
+    environment:
+      - server_params=--settings=settings.local
     volumes:
       - .:/data/recruitment
     ports:
