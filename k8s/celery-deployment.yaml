@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
@@ -6,8 +6,8 @@ metadata:
     kompose.version: 1.16.0 (0c01309)
   creationTimestamp: null
   labels:
-    io.kompose.service: flower
-  name: flower
+    io.kompose.service: celery
+  name: celery
 spec:
   replicas: 1
   strategy:
@@ -16,23 +16,21 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: flower
+        io.kompose.service: celery
     spec:
       containers:
       - args:
         - /bin/sh
-        - /data/recruitment/flower.start.sh
+        - /data/recruitment/worker.start.sh
         image: registry.cn-beijing.aliyuncs.com/ihopeit/django-recruitment:0.9
-        name: recruit-flower
-        ports:
-        - containerPort: 5555
+        name: recruit-celery
         resources: {}
         volumeMounts:
         - mountPath: /data/recruitment
-          name: flower-claim0
+          name: celery-claim0
       restartPolicy: Always
       volumes:
-      - name: flower-claim0
+      - name: celery-claim0
         persistentVolumeClaim:
-          claimName: flower-claim0
+          claimName: celery-claim0
 status: {}
