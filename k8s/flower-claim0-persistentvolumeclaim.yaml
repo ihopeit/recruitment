@@ -6,9 +6,10 @@ metadata:
     io.kompose.service: flower-claim0
   name: flower-claim0
 spec:
+  storageClassName: alicloud-disk-available
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 20Gi
 status: {}

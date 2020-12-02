@@ -12,11 +12,15 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: celery-pod
   template:
     metadata:
       creationTimestamp: null
       labels:
         io.kompose.service: celery
+        app: celery-pod
     spec:
       containers:
       - args:
@@ -26,7 +30,7 @@ spec:
         name: recruit-celery
         resources: {}
         volumeMounts:
-        - mountPath: /data/recruitment
+        - mountPath: /data/recruitment2
           name: celery-claim0
       restartPolicy: Always
       volumes:

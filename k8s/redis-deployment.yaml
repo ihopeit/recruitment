@@ -11,15 +11,21 @@ metadata:
 spec:
   replicas: 1
   strategy: {}
+  selector:
+    matchLabels:
+      app: redis-pod
   template:
     metadata:
       creationTimestamp: null
       labels:
         io.kompose.service: redis
+        app: redis-pod
     spec:
       containers:
       - image: redis:alpine
         name: recruit-redis
+        ports:
+        - containerPort: 6379
         resources: {}
       restartPolicy: Always
 status: {}

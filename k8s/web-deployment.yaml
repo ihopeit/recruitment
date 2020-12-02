@@ -12,11 +12,15 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: django-recruitment
   template:
     metadata:
       creationTimestamp: null
       labels:
         io.kompose.service: web
+        app: django-recruitment
     spec:
       containers:
       - args:
@@ -31,7 +35,7 @@ spec:
         - containerPort: 8000
         resources: {}
         volumeMounts:
-        - mountPath: /data/recruitment
+        - mountPath: /data/recruitment2
           name: web-claim0
       restartPolicy: Always
       volumes:
