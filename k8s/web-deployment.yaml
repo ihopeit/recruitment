@@ -29,6 +29,13 @@ spec:
         env:
         - name: server_params
           value: --settings=settings.local
+        ######### environment variables for logtail to SLS ###########
+        - name: aliyun_logs_recruitment-web
+          value: stdout
+        - name: aliyun_logs_recruitment-web
+          value: /var/log/*.log
+        - name: aliyun_logs_mytag1_tags
+          value: tag1=v1
         image: registry.cn-beijing.aliyuncs.com/ihopeit/django-recruitment:0.9
         name: recruitment-web
         ports:
