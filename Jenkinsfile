@@ -29,7 +29,10 @@ pipeline {
     }
     stage('Apply Kubernetes Files') {
       steps {
-          withKubeConfig([credentialsId: 'kubeconfig']) {
+          // 在 jenkins 的 pipeline 配置中替换掉下面的 caCertificate 的内容
+          kubeconfig(caCertificate: 'base64-encoded-certificate-authority-data==',credentialsId: 'kubeconfig', serverUrl: 'https://192.168.0.235:6443') {
+          // 部署到 kubernetes 
+          sh 'echo deploy to kubernetes'
           sh 'kubectl apply -f k8s/web-claim0-persistentvolumeclaim.yaml '
           sh 'kubectl apply -f k8s/redis-service.yaml'
           sh 'kubectl apply -f k8s/flower-service.yaml'
@@ -39,7 +42,9 @@ pipeline {
           sh 'cat k8s/celery-deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
           sh 'cat k8s/flower-deployment.yaml | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
           sh 'cat k8s/web-deployment.yaml    | sed "s/{{BUILD_NUMBER}}/$BUILD_NUMBER/g" | kubectl apply -f -'
-        }
+        
+          }
+        
       }
     }
   }
