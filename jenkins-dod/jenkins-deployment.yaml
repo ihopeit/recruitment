@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      securityContext:
+        # Specify fsGroup for pod, so that the persistent volume is writable for the non-privileged uid/gid 1000
+        # Run as root user
+        runAsUser: 0
+      containers:
+      - name: jenkins
+        image: ihopeit/jenkins-dod:1.1
+        ports:
+          - name: http-port
+            containerPort: 8080
+          - name: jnlp-port
+            containerPort: 50000
+        # Specify docker sock so that docker in jenkins could be called
+        volumeMounts:
+          - name: jenkins-vol
+            mountPath: /var/jenkins_vol
+          - name: dockersocket
+            mountPath: /var/run/docker.sock
+      volumes:
+        - name: jenkins-vol
+          emptyDir: {}
+        - name: dockersocket
+          hostPath:
+            path: /var/run/docker.sock

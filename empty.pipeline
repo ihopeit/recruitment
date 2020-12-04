@@ -1,0 +1,18 @@
+pipeline {
+  agent any
+  stages {
+      stage('Try docker command') {
+      steps {
+         sh "docker images" 
+      }
+    }
+  }
+  post {
+    success {
+      sh "echo Pipeline is successfully completed."
+    }
+    failure {
+      sh "echo Pipeline failed. Please check the logs."
+    }
+  }
+}

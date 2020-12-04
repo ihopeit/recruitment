@@ -1,0 +1,21 @@
+Option 1:
+
+docker build -t ihopeit/jenkins-dod:1.0 .
+
+mkdir -p /var/jenkins_home
+
+docker run -it -u root -p 8900:8080 -p 50000:50000 \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /var/jenkins_home:/var/jenkins_home \
+--name jenkins ihopeit/jenkins-dod:1.0
+
+
+docker container commit jenkins ihopeit/jenkins-dod:1.1
+docker tag ihopeit/jenkins-dod:1.1 registry.cn-beijing.aliyuncs.com/ihopeit/jenkins-dod:1.1
+docker push registry.cn-beijing.aliyuncs.com/ihopeit/jenkins-dod:1.1
+
+初始化完成后，部署到 k8s :
+kubectl apply -f jenkins-service.yaml 
+kubectl apply -f jenkins-deployment.yaml 
+
+jenkins 的启动日志里面会自动产生初始化的 admin 密码，可用于登陆。
