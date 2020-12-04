@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.2"
 services:
   web:
     build:
@@ -9,6 +9,7 @@ services:
       - server_params=--settings=settings.local
     volumes:
       - .:/data/recruitment
+      - /data/logs/recruitment/
     ports:
       - "8000:8000"
     depends_on:
@@ -18,12 +19,15 @@ services:
   redis:
     image: "redis:alpine"
     container_name: recruit-redis
+    ports:
+      - "6379:6379"
   celery:
     image: "ihopeit/django-recruitment:0.8"
     container_name: recruit-celery
     volumes:
       - .:/data/recruitment
-    command: /bin/sh /data/recruitment/worker.start.sh
+      - /data/logs/recruitment/
+    entrypoint: ["/bin/sh", "/data/recruitment/worker.start.sh"]
     depends_on: 
       - redis
   flower:
@@ -33,6 +37,8 @@ services:
       - "5555:5555"
     volumes:
       - .:/data/recruitment
-    command: /bin/sh /data/recruitment/flower.start.sh
+      - /data/logs/recruitment/
+    entrypoint: ["/bin/sh", "/data/recruitment/flower.start.sh"]
     depends_on: 
       - redis
+      

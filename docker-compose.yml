@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   web:
-    image: "ihopeit/django-recruitment:0.8"
+    image: "ihopeit/django-recruitment-base:0.8"
     container_name: recruitment-web
     entrypoint: ["/bin/sh", "/data/recruitment/start.local.bat"]
     environment:

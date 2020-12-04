@@ -25,10 +25,46 @@ spec:
       containers:
       - args:
         - /bin/sh
-        - /data/recruitment/start.local.bat
+        - /data/recruitment/start.production.bat
         env:
         - name: server_params
-          value: --settings=settings.local
+          value: --settings=settings.production
+        ### variables from kubernetes secret
+        - name: DINGTALK_WEB_HOOK_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: recruitment-secrets
+              key: DINGTALK_WEB_HOOK_TOKEN
+        - name: DJANGO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: recruitment-secrets
+              key: DJANGO_SECRET_KEY
+        - name: LDAP_AUTH_URL
+          valueFrom:
+            secretKeyRef:
+              name: recruitment-secrets
+              key: LDAP_AUTH_URL
+        - name: LDAP_AUTH_CONNECTION_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: recruitment-secrets
+              key: LDAP_AUTH_CONNECTION_USERNAME
+        - name: LDAP_AUTH_CONNECTION_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: recruitment-secrets
+              key: LDAP_AUTH_CONNECTION_PASSWORD
+        - name: OSS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: recruitment-secrets
+              key: OSS_ACCESS_KEY_ID
+        - name: OSS_ACCESS_KEY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: recruitment-secrets
+              key: OSS_ACCESS_KEY_SECRET
         ######### environment variables for logtail to SLS ###########
         - name: aliyun_logs_recruitment-web
           value: stdout
@@ -37,6 +73,7 @@ spec:
         - name: aliyun_logs_mytag1_tags
           value: tag1=v1
         image: registry.cn-beijing.aliyuncs.com/ihopeit/django-recruitment:0.9
+        imagePullPolicy: Always
         name: recruitment-web
         ports:
         - containerPort: 8000

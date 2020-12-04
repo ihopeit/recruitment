@@ -1,6 +1,0 @@
-FROM ihopeit/django-recruitment:0.8
-WORKDIR /data/recruitment
-ENV server_params=
-COPY settings/local-setting.py /data/recruitment/settings/local.py
-EXPOSE 8000
-CMD ["/bin/sh", "/data/recruitment/start.local.bat"]
