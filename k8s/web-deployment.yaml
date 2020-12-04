@@ -72,7 +72,7 @@ spec:
           value: /data/logs/recruitment/*.log
         - name: aliyun_logs_mytag1_tags
           value: tag1=v1
-        image: registry.cn-beijing.aliyuncs.com/ihopeit/django-recruitment:0.9
+        image: registry.cn-beijing.aliyuncs.com/ihopeit/django-recruitment:{{BUILD_NUMBER}}
         imagePullPolicy: Always
         name: recruitment-web
         ports:
