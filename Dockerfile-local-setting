@@ -1,4 +1,4 @@
-FROM ihopeit/django-recruitment:0.9
+FROM ihopeit/django-recruitment:0.8
 WORKDIR /data/recruitment
 ENV server_params=
 COPY settings/local-setting.py /data/recruitment/settings/local.py

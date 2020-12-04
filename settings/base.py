@@ -18,6 +18,17 @@ from django.utils.translation import gettext_lazy as _
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG_DIR = "/data/logs/recruitment/"
 
+import platform
+from pathlib import Path
+
+if platform.system() == "Linux" or platform.system() == "Windows":
+    # linux or windows
+    Path(LOG_DIR).mkdir(parents=True, exist_ok=True)
+elif platform.system() == "Darwin" or platform.system() == "Mac":
+    # OS X, 
+    # you could not create a folder at /data/logs dure to OS default policy
+    LOG_DIR = BASE_DIR
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
