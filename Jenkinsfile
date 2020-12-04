@@ -16,7 +16,7 @@ pipeline {
     stage('Docker Push') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'aliyunhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword} registry.cn-beijing.aliyuncs.com"
           sh "docker push registry.cn-beijing.aliyuncs.com/ihopeit/django-recruitment:${env.BUILD_NUMBER}"
         }
       }
