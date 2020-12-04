@@ -29,12 +29,5 @@ spec:
         image: registry.cn-beijing.aliyuncs.com/ihopeit/django-recruitment:0.9
         name: recruit-celery
         resources: {}
-        volumeMounts:
-        - mountPath: /data/recruitment2
-          name: celery-claim0
       restartPolicy: Always
-      volumes:
-      - name: celery-claim0
-        persistentVolumeClaim:
-          claimName: celery-claim0
 status: {}

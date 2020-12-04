@@ -3,11 +3,12 @@ services:
   web:
     image: "ihopeit/django-recruitment:0.8"
     container_name: recruitment-web
-    command: /bin/sh /data/recruitment/start.local.bat
+    entrypoint: ["/bin/sh", "/data/recruitment/start.local.bat"]
     environment:
       - server_params=--settings=settings.local
     volumes:
       - .:/data/recruitment
+      - /data/logs/recruitment/
     ports:
       - "8000:8000"
     depends_on:
@@ -24,7 +25,8 @@ services:
     container_name: recruit-celery
     volumes:
       - .:/data/recruitment
-    command: /bin/sh /data/recruitment/worker.start.sh
+      - /data/logs/recruitment/
+    entrypoint: ["/bin/sh", "/data/recruitment/worker.start.sh"]
     depends_on: 
       - redis
   flower:
@@ -34,6 +36,7 @@ services:
       - "5555:5555"
     volumes:
       - .:/data/recruitment
-    command: /bin/sh /data/recruitment/flower.start.sh
+      - /data/logs/recruitment/
+    entrypoint: ["/bin/sh", "/data/recruitment/flower.start.sh"]
     depends_on: 
       - redis

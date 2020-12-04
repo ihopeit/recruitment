@@ -31,12 +31,5 @@ spec:
         ports:
         - containerPort: 5555
         resources: {}
-        volumeMounts:
-        - mountPath: /data/recruitment2
-          name: flower-claim0
       restartPolicy: Always
-      volumes:
-      - name: flower-claim0
-        persistentVolumeClaim:
-          claimName: flower-claim0
 status: {}

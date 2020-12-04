@@ -6,7 +6,7 @@ metadata:
     io.kompose.service: web-claim0
   name: web-claim0
 spec:
-  storageClassName: alicloud-disk-available
+  storageClassName: alicloud-disk-efficiency
   accessModes:
   - ReadWriteOnce
   resources:
