@@ -27,6 +27,7 @@ spec:
         - /bin/sh
         - /data/recruitment/flower.start.sh
         image: registry.cn-beijing.aliyuncs.com/ihopeit/django-recruitment:{{BUILD_NUMBER}}
+        imagePullPolicy: Always
         name: recruit-flower
         ports:
         - containerPort: 5555

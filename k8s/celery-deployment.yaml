@@ -27,6 +27,7 @@ spec:
         - /bin/sh
         - /data/recruitment/worker.start.sh
         image: registry.cn-beijing.aliyuncs.com/ihopeit/django-recruitment:{{BUILD_NUMBER}}
+        imagePullPolicy: Always
         name: recruit-celery
         resources: {}
       restartPolicy: Always
