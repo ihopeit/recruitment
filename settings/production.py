@@ -7,7 +7,7 @@ from .base import *
 
 ALLOWED_HOSTS = ["127.0.0.1", "host.docker.internal","*"]
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','w$46iie+a8-7f(13#i%v@pa@+fbm^t@fofizy1^m69r8(-h16o3s882')
 
 DEBUG = False
 INSTALLED_APPS += (
@@ -61,9 +61,9 @@ STATIC_URL = 'http://icdn.ihopeit.com/static/'
 DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
 
 # AliCloud access key ID
-OSS_ACCESS_KEY_ID = os.environ.get('OSS_ACCESS_KEY_ID')
+OSS_ACCESS_KEY_ID = os.environ.get('OSS_ACCESS_KEY_ID','')
 # AliCloud access key secret
-OSS_ACCESS_KEY_SECRET = os.environ.get('OSS_ACCESS_KEY_SECRET')
+OSS_ACCESS_KEY_SECRET = os.environ.get('OSS_ACCESS_KEY_SECRET','')
 # The name of the bucket to store files in
 OSS_BUCKET_NAME = 'djangorecruit'
 
@@ -71,7 +71,7 @@ OSS_BUCKET_NAME = 'djangorecruit'
 # Refer https://www.alibabacloud.com/help/zh/doc-detail/31837.htm for OSS Region & Endpoint
 OSS_ENDPOINT = 'oss-cn-beijing.aliyuncs.com'
 
-DINGTALK_WEB_HOOK_TOKEN = os.environ.get('DINGTALK_WEB_HOOK_TOKEN')
+DINGTALK_WEB_HOOK_TOKEN = os.environ.get('DINGTALK_WEB_HOOK_TOKEN','')
 DINGTALK_WEB_HOOK = "https://oapi.dingtalk.com/robot/send?access_token=%s" % DINGTALK_WEB_HOOK_TOKEN
 
 ##########################
