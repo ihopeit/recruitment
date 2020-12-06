@@ -3,8 +3,9 @@ name: Docker publish to github
 on:
   push:
     # Publish `master` as Docker `latest` image.
+    # changed to publish branch to disable the build
     branches:
-      - master
+      - publish
 
     # Publish `v1.2.3` tags as releases.
     tags:
