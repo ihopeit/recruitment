@@ -14,7 +14,7 @@
 ## 博客地址
 
 部分技术细节的详细介绍, 参考博客地址:
-[若谷学院技术分享](https://blog.ruoguedu.com/)
+[若谷技术分享](https://blog.ruoguedu.com/)
 
 ## 项目效果
 
@@ -42,8 +42,8 @@ https://docs.djangoproject.com/
 
 ### 如何运行
 本地和生产环境分别运行如下命令:
-* python ./manage.py runserver 127.0.0.1:8000 --settings=settings.local
-* python ./manage.py runserver 127.0.0.1:8000 --settings=settings.production
+* python3 ./manage.py runserver 127.0.0.1:8000 --settings=settings.local
+* python3 ./manage.py runserver 127.0.0.1:8000 --settings=settings.production
 
 然后可以通过访问如下两个页面 
 * http://127.0.0.1:8000 首页
@@ -51,7 +51,7 @@ https://docs.djangoproject.com/
 
 ### 命令行导入候选人
 
-* python manage.py import_candidates --path /path/to/your/file.csv
+* python3 manage.py import_candidates --path /path/to/your/file.csv
 
 ### OpenLDAP/Active Directory集成
 * 1.settings/base.py中配置LDAP相关的映射信息 （用户尝试登陆时自动创建账号，但创建的账号 is_staff = false,不能登陆系统）
