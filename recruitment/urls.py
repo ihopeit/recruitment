@@ -13,7 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.urls import re_path
+
 from django.contrib import admin
 from django.urls import path
 from django.utils.translation import gettext_lazy as _
@@ -66,7 +68,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     
     # 使用 login_with_captcha 作为管理员的登陆页
-    url(r'^admin/login/?$', views.login_with_captcha, name='adminlogin'),
+    re_path(r'^admin/login/?$', views.login_with_captcha, name='adminlogin'),
 
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),   
@@ -79,7 +81,7 @@ urlpatterns = [
     path('', include('django_prometheus.urls')), 
 ]
 
-from django.conf.urls import include, url
+from django.conf.urls import include
 from django.conf import settings
 
 if settings.DEBUG:

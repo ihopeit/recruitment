@@ -53,7 +53,7 @@ class Province(models.Model):
     def __str__(self):
         return self.chn_name if self.chn_name else ""
 
-from smart_selects.db_fields import ChainedForeignKey
+#from smart_selects.db_fields import ChainedForeignKey
 
 
 class City(models.Model):

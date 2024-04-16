@@ -20,3 +20,19 @@ INSTALLED_APPS += (
 
 ## 钉钉群的 WEB_HOOK， 用于发送钉钉消息
 DINGTALK_WEB_HOOK = "https://oapi.dingtalk.com/robot/send?access_token=xxxxx"
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://localhost:6379/1",
+        'TIMEOUT': 60, # default expire time per api call
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "SOCKET_CONNECT_TIMEOUT": 5,  # in seconds
+            "SOCKET_TIMEOUT": 5,  # r/w timeout in seconds
+            'MAX_ENTRIES': 10000,
+            'KEY_PREFIX': 'recruit-',
+        }
+    }
+}
+

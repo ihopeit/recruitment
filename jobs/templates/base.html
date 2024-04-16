@@ -17,21 +17,28 @@
 {% block header %}
 <div style="margin-left: 5px;display: -webkit-flex;display: flex;">
     
-  <div style="flex: 4; ">
-<a href="/" style="text-decoration: none; color:#007bff">{% translate "Homepage" %}</a>
-<a href="/joblist" style="text-decoration: none; color:#007bff">{% translate "job list" %}</a>
+  <div style="display: flex; align-items: left; ">
+    <a href="/" style="text-decoration: none; color:#007bff; margin-right: 10px;">{% translate "Homepage" %}</a>
+    <a href="/joblist" style="text-decoration: none; color:#007bff;margin-right: 10px;">{% translate "job list" %}</a>
 
-{% if user.is_authenticated %}
-<a href="/accounts/logout" style="text-decoration: none; color:#007bff">{% translate "Logout" %}</a>
-{% else %}
-<a href="/accounts/login" style="text-decoration: none; color:#007bff">{% translate "Login" %}</a>
-{% endif %}
+    {% if user.is_authenticated %}
 
-{% if user.is_authenticated %}
-<p>{% blocktranslate with user_name=user.username %} 终于等到你 {{ user_name }}, 期待加入我们，用技术去探索一个新世界 {% endblocktranslate %}</p>
-{% else %}
-<br>{% translate "欢迎你，期待加入我们，登陆后可以提交简历." %}<br>
-{% endif %}
+    <form method="post" action="/accounts/logout/">
+      {% csrf_token %}<button type="submit" style="background: none!important;border: none;padding: 0!important;color: #069;text-decoration: underline;cursor: pointer;margin-right: 10px;">{% translate "Logout" %}</button>
+    </form>
+
+    {% else %}
+    <a href="/accounts/login" style="text-decoration: none; color:#007bff;margin-right: 10px;">{% translate "Login" %}</a>
+    {% endif %}
+  </div>
+
+  
+  <div style="text-align: left;">
+  {% if user.is_authenticated %}
+  <p>{% blocktranslate with user_name=user.username %} 终于等到你 {{ user_name }}, 期待加入我们 {% endblocktranslate %}</p>
+  {% else %}
+  <br>{% translate "欢迎你，期待加入我们，登陆后可以提交简历." %}<br>
+  {% endif %}
   </div>
 
 <div style="flex: 1; align-content:right;">
